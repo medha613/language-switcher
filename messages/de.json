@@ -1,0 +1,13 @@
+{
+  "HomePage": {
+    "title": "DEEEE",
+    "about": "Go to the about page"
+  },
+  "AboutPage":{
+    "title": "deAbout"
+  },
+  "AddProduct" : {
+    
+  }
+
+}
