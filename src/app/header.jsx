@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
 
 import { useTransition } from "react";
@@ -46,6 +47,19 @@ export default function Header() {
       <div className=" flex flex-row justify-between ">
         <h2 className=" font-bold ">Language Switcher</h2>
 
+        <nav>
+          <ul className=" flex flex-row gap-4">
+            <Link className="font-bold" href="/">
+              Home
+            </Link>
+            <Link className="font-bold" href="/about">
+              About
+            </Link>
+            <Link className="font-bold" href="/about">
+              Contact
+            </Link>
+          </ul>
+        </nav>
         {isPending ? (
           <div>Loading.....</div>
         ) : (
