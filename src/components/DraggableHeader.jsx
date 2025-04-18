@@ -24,21 +24,24 @@ export default function DraggableHeader() {
   const handleMouseMove = () => {
     if ((!isDragging, current)) return;
 
-    const dy = e.clientY - startY.current
-    const newHeight = Math.min(Math.max(startHeight.current + dy, minHeight), maxHeight)
-    console.log(newHeight, "NEWWW HEIGHT")
-    setHeight(newHeight)
+    const dy = e.clientY - startY.current;
+    const newHeight = Math.min(
+      Math.max(startHeight.current + dy, minHeight),
+      maxHeight
+    );
+    console.log(newHeight, "NEWWW HEIGHT");
+    setHeight(newHeight);
   };
 
   const handleMouseUp = () => {
-    isDragging = false
-    document.removeEventListener("mousemove", handleMouseMove)
-    document.removeEventListener("mouseup", handleMouseMove)
+    isDragging = false;
+    document.removeEventListener("mousemove", handleMouseMove);
+    document.removeEventListener("mouseup", handleMouseMove);
   };
 
   return (
     <>
-      <div style={ { height: `${height}px`, backgroundColor: "GrayText"}}>
+      <div style={{ height: `${height}px`, backgroundColor: "GrayText" }}>
         <div onMouseDown={handleMouseDown}>Drag me</div>
         <div>
           <p>drag this below items</p>
