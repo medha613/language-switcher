@@ -41,11 +41,22 @@ export default function LangSwitcher() {
       {isPending ? (
         <div>Loading.....</div>
       ) : (
-        <select value={locale} onChange={handleLangSwitch} className="">
-          <option value="en">Eng</option>
-          <option value="de">De</option>
-        </select>
+        <div>
+            <label htmlFor="language-select" className="sr-only">Select label</label>
+            <select
+                id="language-select"
+                value={locale}
+                onChange={handleLangSwitch}
+                className=""
+            >
+                <option value="en">Eng</option>
+                <option value="de">De</option>
+
+            </select>
+        </div>
       )}
     </>
   );
 }
+
+
