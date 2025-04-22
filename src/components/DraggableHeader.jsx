@@ -1,3 +1,5 @@
+'use client'
+
 import { useRef, useState } from "react";
 // header hight draggable
 
@@ -34,7 +36,7 @@ export default function DraggableHeader() {
   };
 
   const handleMouseUp = () => {
-    isDragging = false;
+    isDragging.current = false;
     document.removeEventListener("mousemove", handleMouseMove);
     document.removeEventListener("mouseup", handleMouseMove);
   };
