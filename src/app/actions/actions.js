@@ -9,3 +9,6 @@ export async function createProduct(formData) {
 }
 
 // export async function 
+
+
+// static  
