@@ -9,12 +9,14 @@ export default function MainMenu() {
         <Link className="font-bold" href="/about">
           About
         </Link>
-        <Link className="font-bold" href="/products">
-          Products
+        <Link className="font-bold" href="/posts">
+          Posts
         </Link>
         <Link className="font-bold" href="/chatbot">
           Chatbot
         </Link>
+        <Link className="font-bold" href="/users">
+        Users</Link>
       </nav>
     </>
   );
