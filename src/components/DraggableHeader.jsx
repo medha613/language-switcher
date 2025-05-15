@@ -15,10 +15,10 @@ export default function DraggableHeader() {
   const isDragging = useRef(false);
 
   const handleMouseDown = (e) => {
-    isDragging.current = true;
+    isDragging.current = true; 
     startY.current = e.clientY;
     startHeight.current = height;
-
+     console.log(startHeight, "<-----start height", "start height current---->", startHeight.current)
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
   };
@@ -31,7 +31,7 @@ export default function DraggableHeader() {
       Math.max(startHeight.current + dy, minHeight),
       maxHeight
     );
-    console.log(newHeight, "NEWWW HEIGHT");
+    cosole.log(newHeight, "NEWWW HEIGHT");
     setHeight(newHeight);
   };
 
