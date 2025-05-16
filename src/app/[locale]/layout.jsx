@@ -5,19 +5,16 @@ import { LangChangeHandler } from "../LangChangeHandler";
 
 import ClientProvider from "@/components/ClientProvider";
 
-export default async function LocaleLayout({children,  params }) {
+export default async function LocaleLayout({ children, params }) {
   const { locale } = await params;
 
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
   return (
-    // <html suppressHydrationWarning >
-    <html lang={locale}>
+    <>
       <LangChangeHandler />
-      <body>
-        <ClientProvider locale={locale}>{children} </ClientProvider>
-      </body>
-    </html>
+      <ClientProvider locale={locale}>{children} </ClientProvider>
+    </>
   );
 }
