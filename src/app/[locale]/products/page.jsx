@@ -1,50 +1,57 @@
-// implement useTranslation hook- make less important. but it make website irresponsive for that amount of time
 "use client";
 
-import { useState, useTransition } from "react";
+import { useProducts } from '@/hooks/useProducts'; // Ensure this path is correct
 
 export default function ProductsPage() {
-  const [isPending, startTranslation] = useTransition();
-  const [selectedTab, setSelectedTab] = useState();
-  const [tabs, setTabs] = useState([
-    { id: 1, name: "Tab 1" },
-    { id: 2, name: "Tab 2" },
-    { id: 3, name: "Tab 3" },
-    { id: 4, name: "Tab 4" },
-    { id: 5, name: "Tab 5" },
-  ]);
+  const { data: products, isLoading, error } = useProducts();
 
-  if (isPending) {
-    return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+      <div className="container mx-auto px-4 py-12 text-center">
+        <h1 className="text-2xl font-semibold text-gray-700">Loading products...</h1>
+      </div>
+    );
   }
 
-  
-  
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-12 text-center">
+        <h1 className="text-2xl font-semibold text-red-600">Error loading products</h1>
+        <p className="text-red-500">{error.message}</p>
+      </div>
+    );
+  }
+
+  if (!products || products.length === 0) {
+    return (
+      <div className="container mx-auto px-4 py-12 text-center">
+        <h1 className="text-2xl font-semibold text-gray-700">Our Products</h1>
+        <p className="text-gray-500 mt-4">No products found at the moment. Please check back later!</p>
+      </div>
+    );
+  }
+
   return (
-    <>
-      {tabs.map((tab) => (
-        <>
-          <div key={tab.id} className="flex flex-col gap-2">
-            <button
-              onClick={() => {
-                startTranslation(() => {
-                  setSelectedTab(tab.id);
-                });
-              }}
-              className={`p-2 rounded-md ${
-                selectedTab === tab.id ? "bg-blue-500" : "bg-gray-200"
-              }`}
-            >
-              {tab.name}
-            </button>
-            {/* {selectedTab === tab.id && (
-                <div className="p-4 bg-gray-100 border rounded-md">
-                    Content for {tab.name}
-                </div>
-                )} */}
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-3xl font-bold text-center mb-10 text-gray-800">Our Products</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {products.map((product) => (
+          <div 
+            key={product.id} 
+            className="bg-white p-6 shadow-lg rounded-xl hover:shadow-2xl transition-shadow duration-300 ease-in-out flex flex-col justify-between"
+          >
+            <div>
+              <h2 className="text-xl font-semibold text-gray-800 mb-2">{product.name}</h2>
+              <p className="text-gray-600 mb-4 text-sm">
+                {/* Placeholder for a short description if available in the future */}
+              </p>
+            </div>
+            <p className="text-2xl font-bold text-indigo-600 mt-auto">
+              ${product.price ? product.price.toFixed(2) : 'N/A'}
+            </p>
           </div>
-        </>
-      ))}
-    </>
+        ))}
+      </div>
+    </div>
   );
 }

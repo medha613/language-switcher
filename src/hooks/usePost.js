@@ -4,9 +4,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 
 const fetchPosts = async ({ pageParam = 1 }) => {
   console.log(pageParam, "PAGE PARAM");
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${pageParam}`
-  );
+  const res = await fetch(`/api/posts?page=${pageParam}`); // Changed to internal API endpoint
   const data = await res.json();
   return data;
 };
