@@ -8,6 +8,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 const fetchUsers = async () => {
+  debugger
   const res = await fetch("/api/users"); // Changed to internal API endpoint
   const data = await res.json();
   return data;

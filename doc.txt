@@ -1,0 +1,41 @@
+when to use redux and when to use react-query (real life ecommerce )
+1-1.5
+1. user authentication-- 
+store user and show user related UI (local to app)
+doesn't have to fetch data from the server--redux  toolkit
+
+2. product listing
+fetch data from the server
+handling async and managing server state (fetching, caching, updating the list 
+when products are updated) - (tanstack query)
+
+
+3.shopping cart 
+in this we have to maintain local state, (toolkit)
+but also have to syn the cart to the server (query)
+
+
+
+MINI PROJECT FOR DEMONSTRATING ALL THE FUNCTIONALITIES OF tanstack query (BLOG ADMIN PANEL)
+admin can:
+view users
+view post (paginated)
+crud post
+optimistically update post
+see notifications with auto-refresh
+preload post details
+use SSR
+
+use
+
+
+10-14
+fetch users -- useQueyr + caching - DONE
+fetch paginated post -- useInfinite query / paginated query -- DONE (FOR AND BACK CURSOR)
+post CRUD -- useMutation, invalidate query  ---
+optimistic post update- onMutute, onError, onSettled
+notification autorefetch --refetch interval + stale time
+view post detail-- dependent query + prefetch
+global loading indicator--   useIsFetching, useIsMutation
+prefetch next post on hover-- queryClient.prefetchQuery
+SSR/SSG- dehydrate, hydrate
